@@ -1,0 +1,5 @@
+.vscode/
+cache/*
+!cache/.empty
+*.password
+*.retry

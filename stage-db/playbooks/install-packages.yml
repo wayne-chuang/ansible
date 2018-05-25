@@ -1,0 +1,38 @@
+---
+- name: Install Python 2.7
+  hosts:
+    - LOCAL
+  gather_facts: no
+  tasks:
+    - name: Ensure Python 2.7 is installed
+      raw: test -e /usr/bin/python2.7 || (apt-get update && apt-get install -y python2.7)
+      register: output
+      changed_when: output.rc != 0
+      become: yes
+
+- name: Install pip2
+  hosts:
+    - LOCAL
+  gather_facts: no
+  tasks:
+    - name: Ensure pip2 is installed
+      shell: wget https://bootstrap.pypa.io/get-pip.py | python2.7
+      become: yes
+
+- name: Install boto
+  hosts:
+    - LOCAL
+  gather_facts: no
+  tasks:
+    - name: Ensure boto is installed
+      pip:
+        name: boto
+        state: present
+      become: yes
+
+- name: Install awscli
+  hosts:
+    - LOCAL
+  gather_facts: yes
+  roles: 
+    - role: install-awscli

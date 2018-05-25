@@ -1,0 +1,22 @@
+---
+DATABASE:
+  SOURCE:
+    NAME: kkday-stage-postgresql
+  DEST:
+    NAME: kkday-restore-postgresql
+    INSTANCE:
+      CLASS: db.t2.small
+    ENGINE: postgres
+    STORAGE:
+      TYPE: io1
+      IOPS: 1000
+    PARAMETER_GROUP: kkday-postgresql-93
+    SECURITY_GROUPS:
+      - sg-09ea8ef80750333cd
+    REGION: ap-northeast-1
+    ZONE: ap-northeast-1a
+    SUBNET: xxxxxx
+    TAGS:
+      NAME: xxxxxx
+  SNAPSHOT:
+    NAME: xxxxxx

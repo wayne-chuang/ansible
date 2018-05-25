@@ -1,0 +1,7 @@
+---
+- name: Create db user
+  hosts:
+    - LOCAL
+  gather_facts: yes
+  roles: 
+    - role: create-db-user

@@ -1,0 +1,19 @@
+---
+
+- name : restore database
+  rds:
+    command: restore
+    snapshot: "{{ aws_db_snapshot_name }}"
+    instance_name: "{{ aws_db_instance_name }}"
+    region: "{{ aws_db_region }}"
+    zone: "{{ aws_db_zone }}"
+    subnet: "{{ aws_db_subnet }}"
+    backup_retention: 0
+    wait: yes
+    wait_timeout: 600
+    #publicly_accessible: yes
+    #tags:
+    #    Name: "{{ DATABASE.DEST.TAGS.NAME }}"
+
+
+

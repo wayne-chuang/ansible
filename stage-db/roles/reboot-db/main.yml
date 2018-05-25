@@ -1,0 +1,2 @@
+---
+- import_tasks: reboot-db.yml #重啟目的資料庫

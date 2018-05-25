@@ -1,0 +1,10 @@
+---
+
+- name: 安裝所需套件
+  import_playbook: install-packages.yml
+
+- name: 還原 DB
+  import_playbook: restore-db.yml
+
+- name: 創造 DB user
+  import_playbook: create-db-user.yml

@@ -1,0 +1,11 @@
+---
+- import_tasks: restore-db.yml #還原目的資料庫
+
+
+# - name: Delete old dest DB 
+
+# - name: Restore dest DB from src snapshot
+
+# - name: Modify Security Groups & Parameter Group
+
+# - name: Reboot DB

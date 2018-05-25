@@ -1,0 +1,8 @@
+---
+
+- name : reboot desc database
+  rds :
+    command: reboot
+    instance_name: "{{ aws_db_instance_name }}"
+    wait: yes
+    wait_timeout: 600

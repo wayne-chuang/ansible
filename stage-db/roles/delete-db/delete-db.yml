@@ -1,0 +1,9 @@
+---
+
+- name: delete dest database
+  rds :
+    command: delete
+    region: "{{ aws_db_region }}"
+    instance_name: "{{ aws_db_instance_name }}"
+    wait: yes
+    wait_timeout: 600

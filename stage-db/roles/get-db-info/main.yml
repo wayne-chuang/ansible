@@ -1,0 +1,2 @@
+---
+- import_tasks: facts-dest-db.yml #取得目的資料庫的資訊

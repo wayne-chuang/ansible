@@ -1,0 +1,33 @@
+---
+- name: Restore Dest DB
+  hosts:
+    - LOCAL
+  gather_facts: yes
+  roles:
+    - role: delete-db
+      aws_db_region: '{{ DATABASE.DEST.REGION }}'
+      aws_db_instance_name : '{{ DATABASE.DEST.NAME }}'
+
+    - role: restore-db
+      aws_db_snapshot_name: '{{ DATABASE.SNAPSHOT.NAME }}'
+      aws_db_instance_name: '{{ DATABASE.DEST.NAME }}'
+      aws_db_region: '{{ DATABASE.DEST.REGION }}'
+      aws_db_zone: '{{ DATABASE.DEST.ZONE }}'
+      aws_db_subnet: '{{ DATABASE.DEST.SUBNET }}'
+
+    # - role: modify-db-security-groups
+    #   aws_db_instance_name: '{{ DATABASE.DEST.NAME }}'
+    #   aws_db_region: '{{ DATABASE.DEST.REGION }}'
+    #   aws_db_vpc_security_groups: '{{ DATABASE.DEST.SECURITY_GROUPS }}'
+
+    # - role: reboot-db
+    #   aws_db_instance_name: '{{ DATABASE.DEST.NAME }}'
+
+    # - role: modify-db-user_password
+    #   aws_db_instance_name: '{{ DATABASE.DEST.NAME }}'
+    #   aws_db_region: '{{ DATABASE.DEST.REGION }}'
+    #   aws_db_user: '{{ DATABASE_USER.USER }}'
+
+
+
+

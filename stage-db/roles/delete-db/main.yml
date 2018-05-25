@@ -1,0 +1,2 @@
+---
+- import_tasks: delete-db.yml #刪除目的資料庫
