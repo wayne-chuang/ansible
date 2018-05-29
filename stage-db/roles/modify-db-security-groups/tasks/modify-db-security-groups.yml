@@ -5,10 +5,10 @@
     command: modify
     instance_name: "{{ aws_db_instance_name }}"
     region: "{{ aws_db_region }}"
-    vpc_security_groups: "{{ item }}"
-    with_items:
-   "{{ aws_db_vpc_security_groups }}"
+    vpc_security_groups: "{{ aws_db_vpc_security_groups }}"
     wait: yes
-    wait_timeout: 600
+    wait_timeout: 1000
+    access_key: "{{ VAULT_AWS.DEST.ACCESS_KEY }}"
+    secret_key: "{{ VAULT_AWS.DEST.SECRET_KEY }}"
 
 #這邊不確定vpc_security_groups多組時，是否可以一次給，還是要分次給定...

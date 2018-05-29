@@ -8,9 +8,11 @@
     region: "{{ aws_db_region }}"
     zone: "{{ aws_db_zone }}"
     subnet: "{{ aws_db_subnet }}"
-    backup_retention: 0
+    publicly_accessible: yes
     wait: yes
     wait_timeout: 600
+    access_key: "{{ VAULT_AWS.DEST.ACCESS_KEY }}"
+    secret_key: "{{ VAULT_AWS.DEST.SECRET_KEY }}"
     #publicly_accessible: yes
     #tags:
     #    Name: "{{ DATABASE.DEST.TAGS.NAME }}"

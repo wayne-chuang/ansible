@@ -7,3 +7,6 @@
     instance_name: "{{ aws_db_instance_name }}"
     wait: yes
     wait_timeout: 600
+    access_key: "{{ VAULT_AWS.DEST.ACCESS_KEY }}"
+    secret_key: "{{ VAULT_AWS.DEST.SECRET_KEY }}"
+    

@@ -15,19 +15,44 @@
       aws_db_zone: '{{ DATABASE.DEST.ZONE }}'
       aws_db_subnet: '{{ DATABASE.DEST.SUBNET }}'
 
-    # - role: modify-db-security-groups
-    #   aws_db_instance_name: '{{ DATABASE.DEST.NAME }}'
-    #   aws_db_region: '{{ DATABASE.DEST.REGION }}'
-    #   aws_db_vpc_security_groups: '{{ DATABASE.DEST.SECURITY_GROUPS }}'
+    - role: modify-db-security-groups
+      aws_db_instance_name: '{{ DATABASE.DEST.NAME }}'
+      aws_db_region: '{{ DATABASE.DEST.REGION }}'
+      aws_db_vpc_security_groups: '{{ DATABASE.DEST.SECURITY_GROUPS }}'
+    
+    - role: reboot-db
+      aws_db_instance_name: '{{ DATABASE.DEST.NAME }}'
+      aws_db_region: '{{ DATABASE.DEST.REGION }}'
 
-    # - role: reboot-db
-    #   aws_db_instance_name: '{{ DATABASE.DEST.NAME }}'
-
-    # - role: modify-db-user_password
-    #   aws_db_instance_name: '{{ DATABASE.DEST.NAME }}'
-    #   aws_db_region: '{{ DATABASE.DEST.REGION }}'
-    #   aws_db_user: '{{ DATABASE_USER.USER }}'
-
-
-
-
+    - role: modify-db-user-password
+      aws_db_instance_name: '{{ DATABASE.DEST.NAME }}'
+      aws_db_region: '{{ DATABASE.DEST.REGION }}'
+      aws_db_endpoint: '{{ DATABASE_USER.LOGIN_INFO.LOGIN_HOST }}'
+      aws_db_port: '{{ DATABASE_USER.LOGIN_INFO.PORT }}'
+      aws_db_login_user: '{{ DATABASE_USER.LOGIN_INFO.LOGIN_USER }}'
+      aws_db_login_password: '{{ DATABASE_USER.LOGIN_INFO.LOGIN_PASSWORD }}'
+      aws_db_user: '{{ DATABASE_USER.DBA.DBNAME }}'
+        - dbname: '{{ DATABASE_USER.DBA.DBNAME }}'
+          username: '{{ DATABASE_USER.DBA.NAME }}'
+          password: '{{ DATABASE_USER.DBA.PASSWORD }}'   
+        - dbname: '{{ DATABASE_USER.SCHEMA.DBNAME }}'
+          username: '{{ DATABASE_USER.SCHEMA.NAME }}'
+          password: '{{ DATABASE_USER.SCHEMA.PASSWORD }}'   
+        - dbname: '{{ DATABASE_USER.API.DBNAME }}'
+          username: '{{ DATABASE_USER.API.NAME }}'
+          password: api.stage.12345678 
+        - dbname: '{{ DATABASE_USER.API_ACCTDOC.DBNAME }}'
+          username: '{{ DATABASE_USER.API_ACCTDOC.NAME }}'
+          password: '{{ DATABASE_USER.API_ACCTDOC.PASSWORD }}'   
+        - dbname: '{{ DATABASE_USER.API_FA.DBNAME }}'
+          username: '{{ DATABASE_USER.API_FA.NAME }}'
+          password: '{{ DATABASE_USER.API_FA.PASSWORD }}'   
+        - dbname: '{{ DATABASE_USER.API_WH.DBNAME }}'
+          username: '{{ DATABASE_USER.API_WH.NAME }}'
+          password: '{{ DATABASE_USER.API_WH.PASSWORD }}'   
+        - dbname: '{{ DATABASE_USER.TEAM_DATA.DBNAME }}'
+          username: '{{ DATABASE_USER.TEAM_DATA.NAME }}'
+          password: '{{ DATABASE_USER.TEAM_DATA.PASSWORD }}'   
+        - dbname: '{{ DATABASE_USER.TEAM_FA.DBNAME }}'
+          username: '{{ DATABASE_USER.TEAM_FA.NAME }}'
+          password: '{{ DATABASE_USER.TEAM_FA.PASSWORD }}'   
